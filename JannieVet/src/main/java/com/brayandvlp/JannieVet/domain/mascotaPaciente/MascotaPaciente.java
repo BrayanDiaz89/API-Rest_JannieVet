@@ -26,6 +26,7 @@ public class MascotaPaciente {
     private String color;
     @Enumerated(EnumType.STRING)
     private Mes mesHappyBirthDay;
+    private Boolean activo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_clienteAmo")

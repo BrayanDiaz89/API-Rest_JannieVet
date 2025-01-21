@@ -21,19 +21,17 @@ public class Consulta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "veterinario_id")
-    private Veterinario veterinario;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "paciente_id")
-    private MascotaPaciente mascotaPaciente;
-
     private Double precioConsulta;
     private LocalDateTime fecha;
     @Enumerated(EnumType.STRING)
     private MotivoCancelamiento motivoCancelamiento;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_veterinario")
+    private Veterinario veterinario;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_paciente")
+    private MascotaPaciente mascotaPaciente;
 
 }
