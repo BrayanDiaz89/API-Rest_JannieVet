@@ -1,8 +1,8 @@
 create table veterinarios(
         id bigint not null auto_increment,
-        documento bigint not null unique,
+        documento varchar(10) not null unique,
         nombreCompleto varchar(120) not null,
-        numeroTelefonico bigint not null unique,
+        numeroTelefonico varchar(10) not null unique,
         email varchar(100) not null unique,
         ciudad varchar(100) not null,
         codigoPostal int not null,
