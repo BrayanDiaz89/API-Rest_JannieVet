@@ -2,6 +2,7 @@ package com.brayandvlp.JannieVet.domain.veterinario;
 
 import com.brayandvlp.JannieVet.domain.direccion.Direccion;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -21,9 +22,9 @@ public class Veterinario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long documento;
+    private String documento;
     private String nombreCompleto;
-    private Integer numeroTelefonico;
+    private String numeroTelefonico;
     private String email;
     @Embedded
     private Direccion direccion;
@@ -33,4 +34,6 @@ public class Veterinario {
     private Boolean activo;
 
 
+    public Veterinario(@Valid DatosRegistrarVeterinario datosRegistrarVeterinario) {
+    }
 }

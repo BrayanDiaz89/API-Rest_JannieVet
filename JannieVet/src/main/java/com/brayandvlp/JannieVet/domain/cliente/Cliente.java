@@ -20,9 +20,9 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long documento;
+    private String documento;
     private String nombreCompleto;
-    private Integer numeroTelefonico;
+    private String numeroTelefonico;
     private String email;
     @Embedded
     private Direccion direccion;
