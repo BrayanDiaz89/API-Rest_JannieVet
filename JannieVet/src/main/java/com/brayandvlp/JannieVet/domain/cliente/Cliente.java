@@ -28,4 +28,5 @@ public class Cliente {
     private Direccion direccion;
     private LocalDateTime fecha;
     private Boolean activo;
+
 }
