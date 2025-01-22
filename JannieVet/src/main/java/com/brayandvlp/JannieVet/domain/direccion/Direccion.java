@@ -20,4 +20,12 @@ public class Direccion {
     private String numero;
     private String complemento;
 
+    public Direccion(DatosDireccion direccion){
+        this.ciudad = direccion.ciudad();
+        this.codigoPostal = direccion.codigoPostal();
+        this.calle = direccion.calle();
+        this.numero = direccion.numero();
+        this.complemento = direccion.complemento();
+    }
+
 }
