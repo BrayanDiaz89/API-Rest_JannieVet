@@ -33,7 +33,14 @@ public class Veterinario {
     private LocalDateTime fecha;
     private Boolean activo;
 
-
-    public Veterinario(@Valid DatosRegistrarVeterinario datosRegistrarVeterinario) {
+    public Veterinario(DatosRegistrarVeterinario datosRegistro){
+        this.documento = datosRegistro.documentoIdentidad();
+        this.nombreCompleto = datosRegistro.nombreCompleto();
+        this.numeroTelefonico = datosRegistro.numeroTelefonico();
+        this.email = datosRegistro.email();
+        this.direccion = new Direccion(datosRegistro.direccion());
+        this.especialidad = datosRegistro.especialidad();
+        this.fecha = datosRegistro.fecha();
     }
+
 }
