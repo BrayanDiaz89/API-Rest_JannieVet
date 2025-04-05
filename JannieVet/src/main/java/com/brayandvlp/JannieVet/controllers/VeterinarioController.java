@@ -37,5 +37,9 @@ public class VeterinarioController {
     public ResponseEntity<Page<DatosListadoVeterinario>> listadoVeterinarios(@PageableDefault(size =5)Pageable paginacion) {
         return ResponseEntity.ok(veterinarioRepository.findByActivoTrue(paginacion).map(DatosListadoVeterinario::new));
     }
+    @GetMapping("/inactive")
+    public ResponseEntity<Page<DatosListadoVeterinario>> listadoVeterinariosInactivos(@PageableDefault(size = 5)Pageable paginacion){
+        return ResponseEntity.ok(veterinarioRepository.findByActivoFalse(paginacion).map(DatosListadoVeterinario::new));
+    }
 
 }
