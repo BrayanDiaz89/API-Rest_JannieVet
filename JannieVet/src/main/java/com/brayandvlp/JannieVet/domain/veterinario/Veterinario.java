@@ -41,6 +41,7 @@ public class Veterinario {
         this.direccion = new Direccion(datosRegistro.direccion());
         this.especialidad = datosRegistro.especialidad();
         this.fecha = datosRegistro.fecha();
+        this.activo = datosRegistro.activo();
     }
 
 }
