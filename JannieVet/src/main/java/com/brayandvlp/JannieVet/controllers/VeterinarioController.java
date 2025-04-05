@@ -1,17 +1,14 @@
 package com.brayandvlp.JannieVet.controllers;
 
 import com.brayandvlp.JannieVet.domain.direccion.DatosDireccion;
-import com.brayandvlp.JannieVet.domain.veterinario.DatosRegistrarVeterinario;
-import com.brayandvlp.JannieVet.domain.veterinario.DatosRespuestaVeterinario;
-import com.brayandvlp.JannieVet.domain.veterinario.Veterinario;
-import com.brayandvlp.JannieVet.domain.veterinario.VeterinarioRepository;
+import com.brayandvlp.JannieVet.domain.veterinario.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -35,6 +32,10 @@ public class VeterinarioController {
                         veterinario.getDireccion().getNumero(), veterinario.getDireccion().getComplemento()));
         URI url = uriComponentsBuilder.path("/veterinarios/{id}").buildAndExpand(veterinario.getId()).toUri();
         return ResponseEntity.created(url).body(datosRespuestaVeterinario);
+    }
+    @GetMapping
+    public ResponseEntity<Page<DatosListadoVeterinario>> listadoVeterinarios(@PageableDefault(size =5)Pageable paginacion) {
+        return ResponseEntity.ok(veterinarioRepository.findByActivoTrue(paginacion).map(DatosListadoVeterinario::new));
     }
 
 }
