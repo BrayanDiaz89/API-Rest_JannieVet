@@ -9,6 +9,5 @@ import java.util.Optional;
 public interface VeterinarioRepository extends JpaRepository<Veterinario, Long> {
 
     Page<Veterinario> findByActivoTrue(Pageable paginacion);
-
     Page<Veterinario> findByActivoFalse(Pageable paginacion);
 }

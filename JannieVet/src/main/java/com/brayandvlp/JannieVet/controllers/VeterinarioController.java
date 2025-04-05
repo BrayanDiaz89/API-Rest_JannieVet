@@ -2,6 +2,11 @@ package com.brayandvlp.JannieVet.controllers;
 
 import com.brayandvlp.JannieVet.domain.direccion.DatosDireccion;
 import com.brayandvlp.JannieVet.domain.veterinario.*;
+import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosActualizarVeterinario;
+import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosListadoVeterinario;
+import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosRegistrarVeterinario;
+import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosRespuestaVeterinario;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -42,4 +47,14 @@ public class VeterinarioController {
         return ResponseEntity.ok(veterinarioRepository.findByActivoFalse(paginacion).map(DatosListadoVeterinario::new));
     }
 
+    @PutMapping
+    @Transactional
+    public ResponseEntity<DatosRespuestaVeterinario> actualizarDatosVeterinario(@RequestBody @Valid DatosActualizarVeterinario datosActualizacion){
+        Veterinario veterinario = veterinarioRepository.getReferenceById(datosActualizacion.id());
+        veterinario.actualizarDatos(datosActualizacion);
+        return ResponseEntity.ok(new DatosRespuestaVeterinario(veterinario.getId(), veterinario.getDocumento(), veterinario.getNombreCompleto(),
+                veterinario.getNumeroTelefonico(), veterinario.getEmail(), veterinario.getEspecialidad(), veterinario.getFecha(), veterinario.getActivo(),
+                new DatosDireccion(veterinario.getDireccion().getCiudad(), veterinario.getDireccion().getCodigoPostal(), veterinario.getDireccion().getCalle(),
+                        veterinario.getDireccion().getNumero(), veterinario.getDireccion().getComplemento())));
+    }
 }

@@ -1,4 +1,7 @@
-package com.brayandvlp.JannieVet.domain.veterinario;
+package com.brayandvlp.JannieVet.domain.veterinario.dtos;
+
+import com.brayandvlp.JannieVet.domain.veterinario.Especialidad;
+import com.brayandvlp.JannieVet.domain.veterinario.Veterinario;
 
 import java.time.LocalDateTime;
 

@@ -1,6 +1,8 @@
 package com.brayandvlp.JannieVet.domain.veterinario;
 
 import com.brayandvlp.JannieVet.domain.direccion.Direccion;
+import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosActualizarVeterinario;
+import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosRegistrarVeterinario;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -44,4 +46,24 @@ public class Veterinario {
         this.activo = datosRegistro.activo();
     }
 
+    public void actualizarDatos(@Valid DatosActualizarVeterinario datosActualizacion) {
+        if(datosActualizacion.nombreCompleto() != null){
+            this.nombreCompleto = datosActualizacion.nombreCompleto();
+        }
+        if(datosActualizacion.numeroTelefonico() != null){
+            this.numeroTelefonico = datosActualizacion.numeroTelefonico();
+        }
+        if(datosActualizacion.email() != null){
+            this.email= datosActualizacion.email();
+        }
+        if(datosActualizacion.direccion() != null){
+            this.direccion = new Direccion(datosActualizacion.direccion());
+        }
+        if(datosActualizacion.especialidad() != null){
+            this.especialidad = datosActualizacion.especialidad();
+        }
+        if(datosActualizacion.activo() != null){
+            this.activo = datosActualizacion.activo();
+        }
+    }
 }
