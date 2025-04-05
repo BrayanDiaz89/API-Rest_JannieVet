@@ -1,6 +1,7 @@
-package com.brayandvlp.JannieVet.domain.veterinario;
+package com.brayandvlp.JannieVet.domain.veterinario.dtos;
 
 import com.brayandvlp.JannieVet.domain.direccion.DatosDireccion;
+import com.brayandvlp.JannieVet.domain.veterinario.Especialidad;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
