@@ -27,6 +27,7 @@ public class Cliente {
     @Embedded
     private Direccion direccion;
     private LocalDateTime fecha;
+    @Column(columnDefinition = "TINYINT(1)")
     private Boolean activo;
 
 }

@@ -1,6 +1,7 @@
 package com.brayandvlp.JannieVet.domain.consulta;
 
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.MascotaPaciente;
+import com.brayandvlp.JannieVet.domain.pago.Pago;
 import com.brayandvlp.JannieVet.domain.veterinario.Veterinario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,10 +22,14 @@ public class Consulta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double precioConsulta;
     private LocalDateTime fecha;
     @Enumerated(EnumType.STRING)
     private MotivoCancelamiento motivoCancelamiento;
+    private String motivoConsulta;
+    private String diagnostico;
+    private String tratamiento;
+    @Column(columnDefinition = "TINYINT(1)")
+    private Boolean activa;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_veterinario")
@@ -33,5 +38,9 @@ public class Consulta {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_paciente")
     private MascotaPaciente mascotaPaciente;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_pago")
+    private Pago pago;
 
 }
