@@ -15,7 +15,7 @@ public class Direccion {
 
     @Enumerated(EnumType.STRING)
     private Ciudad ciudad;
-    private Integer codigoPostal;
+    private String codigoPostal;
     private String calle;
     private String numero;
     private String complemento;

@@ -1,4 +1,4 @@
-package com.brayandvlp.JannieVet.domain.mascotaPaciente;
+package com.brayandvlp.JannieVet.domain.pago;
 
 import com.brayandvlp.JannieVet.domain.cliente.Cliente;
 import jakarta.persistence.*;
@@ -6,33 +6,32 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Table(name = "pacientes")
-@Entity(name = "MascotaPaciente")
+@Entity(name = "Pago")
+@Table(name = "pagos")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class MascotaPaciente {
+public class Pago {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombrePaciente;
-    private Integer edad;
+    @Column(precision = 10, scale = 2)
+    private BigDecimal cantidad;
     @Enumerated(EnumType.STRING)
-    private Especie especie;
+    private TipoDePago tipoDePago;
     @Enumerated(EnumType.STRING)
-    private Raza raza;
-    private Double peso;
-    private String color;
-    private LocalDateTime fechaNacimiento;
-    @Column(columnDefinition = "TINYINT(1)")
-    private Boolean activo;
+    private Estado estado;
+    private LocalDateTime fecha;
+    private String comprobante;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_clienteAmo")
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
 }

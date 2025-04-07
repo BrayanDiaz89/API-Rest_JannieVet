@@ -5,7 +5,7 @@ create table veterinarios(
         numeroTelefonico varchar(10) not null unique,
         email varchar(100) not null unique,
         ciudad varchar(100) not null,
-        codigoPostal int not null,
+        codigoPostal varchar(15) not null,
         calle varchar(30) not null,
         numero varchar(30) not null,
         complemento varchar(50) not null,

@@ -33,6 +33,7 @@ public class Veterinario {
     @Enumerated(EnumType.STRING)
     private Especialidad especialidad;
     private LocalDateTime fecha;
+    @Column(columnDefinition = "TINYINT(1)")
     private Boolean activo;
 
     public Veterinario(DatosRegistrarVeterinario datosRegistro){
@@ -47,6 +48,7 @@ public class Veterinario {
     }
 
     public void actualizarDatos(@Valid DatosActualizarVeterinario datosActualizacion) {
+        
         if(datosActualizacion.nombreCompleto() != null){
             this.nombreCompleto = datosActualizacion.nombreCompleto();
         }

@@ -8,7 +8,7 @@ public record DatosDireccion(
         @NotNull(message = "La ciudad debe ser una de las existentes.")
         Ciudad ciudad,
         @NotNull
-        Integer codigoPostal,
+        String codigoPostal,
         @NotBlank
         String calle,
         @NotBlank
