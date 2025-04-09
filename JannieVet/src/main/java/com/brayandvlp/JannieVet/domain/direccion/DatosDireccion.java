@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 public record DatosDireccion(
         @NotNull(message = "La ciudad debe ser una de las existentes.")
         Ciudad ciudad,
-        @NotNull
+        @NotBlank
         String codigoPostal,
         @NotBlank
         String calle,
