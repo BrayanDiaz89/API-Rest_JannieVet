@@ -24,10 +24,6 @@ public record DatosRegistrarVeterinario(
         @Valid
         DatosDireccion direccion,//Por lo que retornario nulo, y no blanco.
         @NotNull(message = "La especialidad debe ser una de las existentes.")
-        Especialidad especialidad,
-        @Future
-        @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-        LocalDateTime fecha,
-        Boolean activo
+        Especialidad especialidad
         ) {
 }

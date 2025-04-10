@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @Table(name = "veterinarios")
 @Entity(name = "Veterinario")
@@ -43,12 +44,8 @@ public class Veterinario {
         this.email = datosRegistro.email();
         this.direccion = new Direccion(datosRegistro.direccion());
         this.especialidad = datosRegistro.especialidad();
-        this.fecha = datosRegistro.fecha();
-        if(datosRegistro.activo()!= null){
-            this.activo = datosRegistro.activo();
-        }else{
-            this.activo=true;
-        }
+        this.fecha = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
+        this.activo = true;
     }
     public void actualizarDatos(@Valid DatosActualizarVeterinario datosActualizacion) {
         
