@@ -58,4 +58,12 @@ public class ClienteController {
                 cliente.getDireccion().getNumero(), cliente.getDireccion().getComplemento())));
     }
 
+    @DeleteMapping("{id}")
+    @Transactional
+    public ResponseEntity desactivarCliente(@PathVariable Long id) {
+        Cliente cliente = clienteRepository.getReferenceById(id);
+        cliente.desactivarCliente();
+        return ResponseEntity.noContent().build();
+    }
+
 }

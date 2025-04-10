@@ -61,4 +61,6 @@ public class Cliente {
         }
         this.fecha = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
     }
+
+    public void desactivarCliente() { this.activo = false; }
 }
