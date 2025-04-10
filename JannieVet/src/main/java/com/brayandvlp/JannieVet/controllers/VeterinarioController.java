@@ -57,4 +57,11 @@ public class VeterinarioController {
                 new DatosDireccion(veterinario.getDireccion().getCiudad(), veterinario.getDireccion().getCodigoPostal(), veterinario.getDireccion().getCalle(),
                         veterinario.getDireccion().getNumero(), veterinario.getDireccion().getComplemento())));
     }
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity desactivarVeterinario(@PathVariable Long id) {
+        Veterinario veterinario = veterinarioRepository.getReferenceById(id);
+        veterinario.desactivarVeterinario();
+        return ResponseEntity.noContent().build();
+    }
 }

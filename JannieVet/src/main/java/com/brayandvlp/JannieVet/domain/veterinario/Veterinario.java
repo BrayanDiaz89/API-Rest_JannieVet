@@ -44,9 +44,12 @@ public class Veterinario {
         this.direccion = new Direccion(datosRegistro.direccion());
         this.especialidad = datosRegistro.especialidad();
         this.fecha = datosRegistro.fecha();
-        this.activo = datosRegistro.activo();
+        if(datosRegistro.activo()!= null){
+            this.activo = datosRegistro.activo();
+        }else{
+            this.activo=true;
+        }
     }
-
     public void actualizarDatos(@Valid DatosActualizarVeterinario datosActualizacion) {
         
         if(datosActualizacion.nombreCompleto() != null){
@@ -68,4 +71,7 @@ public class Veterinario {
             this.activo = datosActualizacion.activo();
         }
     }
+
+    public void desactivarVeterinario() { this.activo = false; }
+
 }
