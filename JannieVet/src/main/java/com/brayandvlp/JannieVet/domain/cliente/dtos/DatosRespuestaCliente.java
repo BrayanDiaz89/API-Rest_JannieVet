@@ -1,20 +1,16 @@
-package com.brayandvlp.JannieVet.domain.veterinario.dtos;
-
+package com.brayandvlp.JannieVet.domain.cliente.dtos;
 import com.brayandvlp.JannieVet.domain.direccion.dtos.DatosDireccion;
-import com.brayandvlp.JannieVet.domain.veterinario.Especialidad;
 
 import java.time.LocalDateTime;
 
-public record DatosRespuestaVeterinario(
+public record DatosRespuestaCliente(
         Long id,
         String documento,
         String nombreCompleto,
         String numeroTelefonico,
         String email,
-        Especialidad especialidad,
-        LocalDateTime fecha,
+        LocalDateTime fecha_registro,
         Boolean activo,
         DatosDireccion direccion
-) {
-
+            ) {
 }

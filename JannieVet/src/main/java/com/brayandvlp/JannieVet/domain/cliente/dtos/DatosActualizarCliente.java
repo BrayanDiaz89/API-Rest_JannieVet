@@ -1,11 +1,12 @@
-package com.brayandvlp.JannieVet.domain.veterinario.dtos;
+package com.brayandvlp.JannieVet.domain.cliente.dtos;
 
 import com.brayandvlp.JannieVet.domain.direccion.dtos.DatosDireccion;
-import com.brayandvlp.JannieVet.domain.veterinario.Especialidad;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
-public record DatosActualizarVeterinario(
+public record DatosActualizarCliente(
         @NotNull
         Long id,
         String nombreCompleto,
@@ -15,8 +16,6 @@ public record DatosActualizarVeterinario(
         String email,
         @Valid
         DatosDireccion direccion,//Por lo que retornario nulo, y no blanco.
-        Especialidad especialidad,
         Boolean activo
-    )  {
-
+) {
 }

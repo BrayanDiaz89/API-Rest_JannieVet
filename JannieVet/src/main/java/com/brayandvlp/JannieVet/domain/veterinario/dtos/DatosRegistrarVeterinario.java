@@ -1,12 +1,9 @@
 package com.brayandvlp.JannieVet.domain.veterinario.dtos;
 
-import com.brayandvlp.JannieVet.domain.direccion.DatosDireccion;
+import com.brayandvlp.JannieVet.domain.direccion.dtos.DatosDireccion;
 import com.brayandvlp.JannieVet.domain.veterinario.Especialidad;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
-
-import java.time.LocalDateTime;
 
 public record DatosRegistrarVeterinario(
         @NotBlank
@@ -24,10 +21,6 @@ public record DatosRegistrarVeterinario(
         @Valid
         DatosDireccion direccion,//Por lo que retornario nulo, y no blanco.
         @NotNull(message = "La especialidad debe ser una de las existentes.")
-        Especialidad especialidad,
-        @Future
-        @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-        LocalDateTime fecha,
-        Boolean activo
+        Especialidad especialidad
         ) {
 }
