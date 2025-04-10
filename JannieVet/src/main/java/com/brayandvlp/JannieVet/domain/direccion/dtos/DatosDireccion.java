@@ -1,6 +1,6 @@
-package com.brayandvlp.JannieVet.domain.direccion;
+package com.brayandvlp.JannieVet.domain.direccion.dtos;
 
-import jakarta.persistence.Column;
+import com.brayandvlp.JannieVet.domain.direccion.Ciudad;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 

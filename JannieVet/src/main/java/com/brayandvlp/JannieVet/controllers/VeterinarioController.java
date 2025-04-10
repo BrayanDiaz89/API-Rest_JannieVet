@@ -1,6 +1,6 @@
 package com.brayandvlp.JannieVet.controllers;
 
-import com.brayandvlp.JannieVet.domain.direccion.DatosDireccion;
+import com.brayandvlp.JannieVet.domain.direccion.dtos.DatosDireccion;
 import com.brayandvlp.JannieVet.domain.veterinario.*;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosActualizarVeterinario;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosListadoVeterinario;

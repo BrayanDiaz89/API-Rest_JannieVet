@@ -2,16 +2,17 @@ package com.brayandvlp.JannieVet.controllers;
 
 import com.brayandvlp.JannieVet.domain.cliente.Cliente;
 import com.brayandvlp.JannieVet.domain.cliente.ClienteRepository;
-import com.brayandvlp.JannieVet.domain.cliente.dtos.DatosRegistrarCliente;
-import com.brayandvlp.JannieVet.domain.cliente.dtos.DatosRespuestaCliente;
-import com.brayandvlp.JannieVet.domain.direccion.DatosDireccion;
+import com.brayandvlp.JannieVet.domain.cliente.dtos.*;
+
+import com.brayandvlp.JannieVet.domain.direccion.dtos.DatosDireccion;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -36,6 +37,25 @@ public class ClienteController {
         return ResponseEntity.created(url).body(datosRespuestaCliente);
     }
 
+    @GetMapping
+    public ResponseEntity<Page<DatosListadoClientes>> listadoClientes(@PageableDefault(size = 5) Pageable paginacion) {
+        return ResponseEntity.ok(clienteRepository.findByActivoTrue(paginacion).map(DatosListadoClientes::new));
+    }
+    @GetMapping("/inactive")
+    public ResponseEntity<Page<DatosListadoClientes>> listadoVeterinariosInactivos(@PageableDefault(size =5)Pageable paginacion) {
+        return ResponseEntity.ok(clienteRepository.findByActivoFalse(paginacion).map(DatosListadoClientes::new));
+    }
 
+    @PutMapping
+    @Transactional
+    public ResponseEntity<DatosRespuestaCliente> actualizarCliente(@RequestBody @Valid DatosActualizarCliente datosActualizarCliente){
+        Cliente cliente = clienteRepository.getReferenceById(datosActualizarCliente.id());
+        cliente.actualizarDatos(datosActualizarCliente);
+
+        return ResponseEntity.ok(new DatosRespuestaCliente(cliente.getId(), cliente.getDocumento(), cliente.getNombreCompleto(), cliente.getNumeroTelefonico(),
+                cliente.getEmail(), cliente.getFecha(), cliente.getActivo(),
+                new DatosDireccion(cliente.getDireccion().getCiudad(), cliente.getDireccion().getCodigoPostal(), cliente.getDireccion().getCalle(),
+                cliente.getDireccion().getNumero(), cliente.getDireccion().getComplemento())));
+    }
 
 }

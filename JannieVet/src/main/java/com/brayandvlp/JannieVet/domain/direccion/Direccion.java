@@ -1,6 +1,6 @@
 package com.brayandvlp.JannieVet.domain.direccion;
 
-import jakarta.persistence.Column;
+import com.brayandvlp.JannieVet.domain.direccion.dtos.DatosDireccion;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

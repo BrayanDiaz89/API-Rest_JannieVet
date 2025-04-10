@@ -1,12 +1,9 @@
 package com.brayandvlp.JannieVet.domain.veterinario.dtos;
 
-import com.brayandvlp.JannieVet.domain.direccion.DatosDireccion;
+import com.brayandvlp.JannieVet.domain.direccion.dtos.DatosDireccion;
 import com.brayandvlp.JannieVet.domain.veterinario.Especialidad;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
-
-import java.time.LocalDateTime;
 
 public record DatosRegistrarVeterinario(
         @NotBlank

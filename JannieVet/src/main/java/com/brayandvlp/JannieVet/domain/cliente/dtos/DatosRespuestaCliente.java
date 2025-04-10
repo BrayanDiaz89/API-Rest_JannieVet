@@ -1,5 +1,5 @@
 package com.brayandvlp.JannieVet.domain.cliente.dtos;
-import com.brayandvlp.JannieVet.domain.direccion.DatosDireccion;
+import com.brayandvlp.JannieVet.domain.direccion.dtos.DatosDireccion;
 
 import java.time.LocalDateTime;
 

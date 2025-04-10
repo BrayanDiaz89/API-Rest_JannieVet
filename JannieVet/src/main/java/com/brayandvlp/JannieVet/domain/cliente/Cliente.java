@@ -1,5 +1,6 @@
 package com.brayandvlp.JannieVet.domain.cliente;
 
+import com.brayandvlp.JannieVet.domain.cliente.dtos.DatosActualizarCliente;
 import com.brayandvlp.JannieVet.domain.cliente.dtos.DatosRegistrarCliente;
 import com.brayandvlp.JannieVet.domain.direccion.Direccion;
 import jakarta.persistence.*;
@@ -41,5 +42,23 @@ public class Cliente {
         this.direccion = new Direccion(datosRegistrarCliente.direccion());
         this.fecha = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
         this.activo=true;
+    }
+    public void actualizarDatos(@Valid DatosActualizarCliente datosActualizarCliente) {
+        if (datosActualizarCliente.nombreCompleto() != null){
+            this.nombreCompleto = datosActualizarCliente.nombreCompleto();
+        }
+        if(datosActualizarCliente.numeroTelefonico() != null){
+            this.numeroTelefonico = datosActualizarCliente.numeroTelefonico();
+        }
+        if(datosActualizarCliente.email() != null){
+            this.email = datosActualizarCliente.email();
+        }
+        if(datosActualizarCliente.direccion() != null){
+            this.direccion = new Direccion(datosActualizarCliente.direccion());
+        }
+        if(datosActualizarCliente.activo() != null){
+            this.activo = datosActualizarCliente.activo();
+        }
+        this.fecha = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
     }
 }

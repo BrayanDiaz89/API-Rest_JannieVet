@@ -1,12 +1,8 @@
 package com.brayandvlp.JannieVet.domain.cliente.dtos;
 
-import com.brayandvlp.JannieVet.domain.direccion.DatosDireccion;
-import com.brayandvlp.JannieVet.domain.veterinario.Especialidad;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.brayandvlp.JannieVet.domain.direccion.dtos.DatosDireccion;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
-
-import java.time.LocalDateTime;
 
 public record DatosRegistrarCliente(@NotBlank
                                     @Pattern(regexp = "^\\d{6,10}$", message = "El documento debe tener de 6 a 10 dígitos.")
