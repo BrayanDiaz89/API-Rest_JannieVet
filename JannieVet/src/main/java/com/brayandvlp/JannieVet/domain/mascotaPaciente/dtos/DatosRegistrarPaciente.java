@@ -22,8 +22,6 @@ public record DatosRegistrarPaciente(
         String color,
         @NotNull(message = "Debe registrar una fecha de nacimiento del paciente.")
         @JsonFormat(pattern = "dd/MM/yyyy")
-        LocalDate fechaNacimiento,
-        @NotNull(message = "Debe asignar un id amo válido del paciente.")
-        Long idAmo
+        LocalDate fechaNacimiento
         ) {
 }
