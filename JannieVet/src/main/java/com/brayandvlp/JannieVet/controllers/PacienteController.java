@@ -2,6 +2,7 @@ package com.brayandvlp.JannieVet.controllers;
 
 
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.PacienteRepository;
+import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosCompletosRegistrarPaciente;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosRegistrarPaciente;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosRespuestaPaciente;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.service.RegistroDePacientes;
@@ -26,8 +27,8 @@ public class PacienteController {
     private RegistroDePacientes registroDePacientes;
 
     @PostMapping
-    public ResponseEntity<DatosRespuestaPaciente> registrarPaciente(@RequestBody @Valid DatosRegistrarPaciente datosRegistrarPaciente){
-        var detalleRegistroPaciente = registroDePacientes.crearPaciente(datosRegistrarPaciente);
+    public ResponseEntity<DatosRespuestaPaciente> registrarPaciente(@RequestBody @Valid DatosCompletosRegistrarPaciente datosRegistro){
+        var detalleRegistroPaciente = registroDePacientes.crearPaciente(datosRegistro);
         return ResponseEntity.ok(detalleRegistroPaciente);
     }
 

@@ -2,6 +2,7 @@ package com.brayandvlp.JannieVet.infra.errores;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ValidationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,9 +23,12 @@ public class TratadorDeErrores {
         return ResponseEntity.badRequest().body(errores);
     }
 
-    @ExceptionHandler(ValidationException.class)
-    public ResponseEntity tratarErroresDeValidacion(ValidationException e){
-        return ResponseEntity.badRequest().body(e.getMessage());
+    @ExceptionHandler(ValidacionException.class)
+    public ResponseEntity<String> tratarErrorDeValidacion(ValidacionException e) {
+        return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(e.getMessage());
     }
+
 }
 

@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.mapping.UniqueKey;
 
 import java.time.LocalDate;
 
