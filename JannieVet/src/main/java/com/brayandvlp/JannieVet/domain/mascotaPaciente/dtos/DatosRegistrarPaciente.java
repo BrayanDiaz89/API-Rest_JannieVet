@@ -10,8 +10,6 @@ import java.time.LocalDate;
 public record DatosRegistrarPaciente(
         @NotBlank(message = "Debe registrarse un nombre para el paciente.")
         String nombre,
-        @NotNull(message = "Debe registrarse una edad.")
-        Integer edad,
         @NotNull(message = "Debe registrarse una especie válida, de la lista.")
         Especie especie,
         @NotBlank(message = "Debe ingresar una raza del paciente.")

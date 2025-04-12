@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public record DatosRespuestaPaciente(
         Long id,
         String nombre,
-        Integer edad,
+        Double edad,
         Especie especie,
         String raza,
         Double peso,
