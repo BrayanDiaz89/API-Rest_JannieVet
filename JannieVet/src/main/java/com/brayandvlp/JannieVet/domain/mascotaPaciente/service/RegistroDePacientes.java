@@ -37,7 +37,7 @@ public class RegistroDePacientes {
 
         //Una vez validado entonces crea el paciente
         var cliente = clienteRepository.findById(datosRegistro.cliente().getId()).get();
-        var registro = new MascotaPaciente(null, cliente, datosRegistro.paciente().nombre(), datosRegistro.paciente().edad(), datosRegistro.paciente().especie(),
+        var registro = new MascotaPaciente(null, cliente, datosRegistro.paciente().nombre(), datosRegistro.paciente().especie(),
                 datosRegistro.paciente().raza(), datosRegistro.paciente().peso(), datosRegistro.paciente().color(), datosRegistro.paciente().fechaNacimiento(),
                 null);
 
