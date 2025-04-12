@@ -35,7 +35,7 @@ public class MascotaPaciente {
     @Column(columnDefinition = "TINYINT(1)")
     private Boolean activo;
     @Transient
-    public static final double diasAño = 365.25;
+    public static final double diasAno = 365.25;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_clienteAmo")
@@ -46,7 +46,7 @@ public class MascotaPaciente {
         LocalDate hoy = LocalDate.now();
         long diasEntre = ChronoUnit.DAYS.between(fechaNacimiento, hoy);
         //Teniendo en cuenta años bisiestos  365.25
-        double edadDecimal = diasEntre / diasAño;
+        double edadDecimal = diasEntre / diasAno;
         return Math.round(edadDecimal * 10.0) / 10.0;
     }
 
