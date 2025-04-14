@@ -43,6 +43,7 @@ public class Cliente {
         this.fecha = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
         this.activo=true;
     }
+
     public void actualizarDatos(@Valid DatosActualizarCliente datosActualizarCliente) {
         if (datosActualizarCliente.nombreCompleto() != null){
             this.nombreCompleto = datosActualizarCliente.nombreCompleto();
