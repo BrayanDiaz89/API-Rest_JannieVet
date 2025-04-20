@@ -1,11 +1,9 @@
 package com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos;
 
-import com.brayandvlp.JannieVet.domain.cliente.Cliente;
 import com.brayandvlp.JannieVet.domain.cliente.dtos.DatosClienteComoAmo;
-import com.brayandvlp.JannieVet.domain.cliente.dtos.DatosListadoClientes;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.Especie;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.MascotaPaciente;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 import java.time.LocalDate;
 

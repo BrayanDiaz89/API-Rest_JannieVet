@@ -1,16 +1,16 @@
 package com.brayandvlp.JannieVet.controllers;
 
 
-import com.brayandvlp.JannieVet.domain.cliente.dtos.DatosListadoClientes;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.PacienteRepository;
+import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosActualizarPaciente;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosCompletosRegistrarPaciente;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosListadoPacientes;
-import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosRegistrarPaciente;
-import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosRespuestaPaciente;
+import com.brayandvlp.JannieVet.domain.mascotaPaciente.service.ActualizacionDePacientes;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.service.RegistroDePacientes;
 
-import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosListadoVeterinario;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,9 +27,11 @@ public class PacienteController {
     private PacienteRepository pacienteRepository;
     @Autowired
     private RegistroDePacientes registroDePacientes;
+    @Autowired
+    private ActualizacionDePacientes actualizacionDePacientes;
 
     @PostMapping
-    public ResponseEntity<DatosRespuestaPaciente> registrarPaciente(@RequestBody @Valid DatosCompletosRegistrarPaciente datosRegistro){
+    public ResponseEntity<DatosListadoPacientes> registrarPaciente(@RequestBody @Valid DatosCompletosRegistrarPaciente datosRegistro){
         var detalleRegistroPaciente = registroDePacientes.crearPaciente(datosRegistro);
         return ResponseEntity.ok(detalleRegistroPaciente);
     }
@@ -44,6 +46,11 @@ public class PacienteController {
         return ResponseEntity.ok(pacienteRepository.findByActivoFalse(paginacion).map(DatosListadoPacientes::new));
     }
 
-
+    @PutMapping
+    @Transactional
+    public ResponseEntity<DatosListadoPacientes> actualizarDatosPaciente(@RequestBody @Valid DatosActualizarPaciente datosActualizarPaciente) {
+        var detalleActualizacionPaciente = actualizacionDePacientes.actualizarPaciente(datosActualizarPaciente);
+        return ResponseEntity.ok(detalleActualizacionPaciente);
+    }
 
 }
