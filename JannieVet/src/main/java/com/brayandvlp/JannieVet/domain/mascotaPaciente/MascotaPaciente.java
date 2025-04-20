@@ -2,7 +2,10 @@ package com.brayandvlp.JannieVet.domain.mascotaPaciente;
 
 import com.brayandvlp.JannieVet.domain.cliente.Cliente;
 
+import com.brayandvlp.JannieVet.domain.cliente.dtos.DatosActualizarCliente;
+import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosActualizarPaciente;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -50,8 +53,9 @@ public class MascotaPaciente {
         return Math.round(edadDecimal * 10.0) / 10.0;
     }
 
-    public MascotaPaciente(Long id, Cliente cliente, String nombre, Especie especie, String raza, Double peso,
-                           String color, LocalDate fechaNacimiento, Boolean activo){
+    //Constructor para registrar paciente
+    public MascotaPaciente(@Valid Long id, Cliente cliente, String nombre, Especie especie, String raza, Double peso,
+                           String color, LocalDate fechaNacimiento){
         this.id = id;
         this.cliente = cliente;
         this.nombrePaciente = nombre;
@@ -60,8 +64,18 @@ public class MascotaPaciente {
         this.peso = peso;
         this.color = color;
         this.fechaNacimiento = fechaNacimiento;
-        if(activo == null) {
+        this.activo = true;
+    }
+    //Constructor para Actualizar paciente
+    public void actualizarPaciente(DatosActualizarPaciente datosActualizarPaciente) {
+        if(datosActualizarPaciente.peso() != null){
+            this.peso = datosActualizarPaciente.peso();
+        }
+        if(datosActualizarPaciente.activo() == null){
             this.activo = true;
+        } else {
+            this.activo = datosActualizarPaciente.activo();
         }
     }
+
 }
