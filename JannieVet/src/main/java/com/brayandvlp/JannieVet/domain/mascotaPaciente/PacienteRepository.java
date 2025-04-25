@@ -21,4 +21,7 @@ public interface PacienteRepository extends JpaRepository<MascotaPaciente, Long>
     Page<MascotaPaciente> findByActivoTrue(Pageable paginacion);
 
     Page<MascotaPaciente> findByActivoFalse(Pageable paginacion);
+
+    Boolean existsByIdAndActivoTrue(Long id);
+
 }

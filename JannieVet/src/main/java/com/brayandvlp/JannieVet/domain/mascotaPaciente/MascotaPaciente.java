@@ -78,4 +78,8 @@ public class MascotaPaciente {
         }
     }
 
+    public void eliminarPaciente(){
+        this.activo = false;
+    }
+
 }

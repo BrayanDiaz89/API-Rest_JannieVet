@@ -6,11 +6,11 @@ import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosActualizarPacie
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosCompletosRegistrarPaciente;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosListadoPacientes;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.service.ActualizacionDePacientes;
+import com.brayandvlp.JannieVet.domain.mascotaPaciente.service.EliminaPaciente;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.service.RegistroDePacientes;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,6 +29,8 @@ public class PacienteController {
     private RegistroDePacientes registroDePacientes;
     @Autowired
     private ActualizacionDePacientes actualizacionDePacientes;
+    @Autowired
+    private EliminaPaciente eliminaPaciente;
 
     @PostMapping
     public ResponseEntity<DatosListadoPacientes> registrarPaciente(@RequestBody @Valid DatosCompletosRegistrarPaciente datosRegistro){
@@ -51,6 +53,13 @@ public class PacienteController {
     public ResponseEntity<DatosListadoPacientes> actualizarDatosPaciente(@RequestBody @Valid DatosActualizarPaciente datosActualizarPaciente) {
         var detalleActualizacionPaciente = actualizacionDePacientes.actualizarPaciente(datosActualizarPaciente);
         return ResponseEntity.ok(detalleActualizacionPaciente);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity eliminarPaciente(@PathVariable Long id){
+        eliminaPaciente.eliminarPaciente(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
