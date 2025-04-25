@@ -4,6 +4,7 @@ import com.brayandvlp.JannieVet.domain.cliente.Cliente;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -24,4 +25,12 @@ public interface PacienteRepository extends JpaRepository<MascotaPaciente, Long>
 
     Boolean existsByIdAndActivoTrue(Long id);
 
+    @Query("""
+           SELECT COUNT(m) > 0
+           FROM MascotaPaciente m
+           WHERE
+           m.id = :idPaciente AND
+           m.cliente.id = :idCliente
+           """)
+    Boolean findByClienteIdAndIdPaciente(Long idPaciente, Long idCliente);
 }

@@ -42,7 +42,7 @@ public class ClienteController {
         return ResponseEntity.ok(clienteRepository.findByActivoTrue(paginacion).map(DatosListadoClientes::new));
     }
     @GetMapping("/inactive")
-    public ResponseEntity<Page<DatosListadoClientes>> listadoVeterinariosInactivos(@PageableDefault(size =5)Pageable paginacion) {
+    public ResponseEntity<Page<DatosListadoClientes>> listadoClientesInactivos(@PageableDefault(size =5)Pageable paginacion) {
         return ResponseEntity.ok(clienteRepository.findByActivoFalse(paginacion).map(DatosListadoClientes::new));
     }
 
