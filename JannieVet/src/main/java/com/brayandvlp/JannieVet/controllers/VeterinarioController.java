@@ -6,6 +6,7 @@ import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosActualizarVeterinar
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosListadoVeterinario;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosRegistrarVeterinario;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosRespuestaVeterinario;
+import com.brayandvlp.JannieVet.domain.veterinario.service.RegistroService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,10 @@ public class VeterinarioController {
 
     @Autowired
     private VeterinarioRepository veterinarioRepository;
+    @Autowired
+    private RegistroService registroService;
 
-    @PostMapping
+    /*@PostMapping
     public ResponseEntity<DatosRespuestaVeterinario> registrarVeterinario(@RequestBody @Valid DatosRegistrarVeterinario datosRegistrarVeterinario,
                                                                           UriComponentsBuilder uriComponentsBuilder){
         Veterinario veterinario = veterinarioRepository.save(new Veterinario(datosRegistrarVeterinario));
@@ -37,7 +40,17 @@ public class VeterinarioController {
                         veterinario.getDireccion().getNumero(), veterinario.getDireccion().getComplemento()));
         URI url = uriComponentsBuilder.path("/veterinarios/{id}").buildAndExpand(veterinario.getId()).toUri();
         return ResponseEntity.created(url).body(datosRespuestaVeterinario);
+    }*/
+
+    @PostMapping
+    public ResponseEntity<DatosListadoVeterinario> registrarVeterinario(@RequestBody @Valid DatosRegistrarVeterinario datosRegistro,
+                                                                          UriComponentsBuilder uriComponentsBuilder){
+        var detallesRegistroVeterinario = registroService.registrar(datosRegistro);
+        URI url = uriComponentsBuilder.path("/veterinarios/{id}").buildAndExpand(detallesRegistroVeterinario.id()).toUri();
+        return ResponseEntity.created(url).body(detallesRegistroVeterinario);
     }
+
+
     @GetMapping
     public ResponseEntity<Page<DatosListadoVeterinario>> listadoVeterinarios(@PageableDefault(size =5)Pageable paginacion) {
         return ResponseEntity.ok(veterinarioRepository.findByActivoTrue(paginacion).map(DatosListadoVeterinario::new));
