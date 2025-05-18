@@ -4,6 +4,7 @@ import com.brayandvlp.JannieVet.domain.cliente.Cliente;
 import com.brayandvlp.JannieVet.domain.cliente.ClienteRepository;
 import com.brayandvlp.JannieVet.domain.cliente.dtos.*;
 
+import com.brayandvlp.JannieVet.domain.cliente.service.RegistrarCliente;
 import com.brayandvlp.JannieVet.domain.direccion.dtos.DatosDireccion;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -23,18 +24,16 @@ public class ClienteController {
 
     @Autowired
     private ClienteRepository clienteRepository;
+    @Autowired
+    private RegistrarCliente serviceRegistro;
 
     @PostMapping
-    public ResponseEntity<DatosRespuestaCliente> registrarCliente(@RequestBody @Valid DatosRegistrarCliente datosRegistrarCliente,
-                                                                  UriComponentsBuilder uriComponentsBuilder){
-        Cliente cliente = clienteRepository.save(new Cliente(datosRegistrarCliente));
-
-        DatosRespuestaCliente datosRespuestaCliente = new DatosRespuestaCliente(cliente.getId(), cliente.getDocumento(), cliente.getNombreCompleto(), cliente.getNumeroTelefonico(),
-                cliente.getEmail(), cliente.getFecha(), cliente.getActivo(),
-                new DatosDireccion(cliente.getDireccion().getCiudad(), cliente.getDireccion().getCodigoPostal(), cliente.getDireccion().getCalle(),
-                cliente.getDireccion().getNumero(), cliente.getDireccion().getComplemento()));
-        URI url = uriComponentsBuilder.path("/veterinarios/{id]").buildAndExpand(cliente.getId()).toUri();
-        return ResponseEntity.created(url).body(datosRespuestaCliente);
+    public ResponseEntity<DatosRespuestaCliente> registrarCliente(@RequestBody @Valid DatosRegistrarCliente datosRegistro,
+                                                                  UriComponentsBuilder uriComponentsBuilder) {
+        var detalleRegistroCliente = serviceRegistro.crearCliente(datosRegistro);
+        Cliente cliente = clienteRepository.getReferenceById(detalleRegistroCliente.id());
+        URI url = uriComponentsBuilder.path("/clientes/{id]").buildAndExpand(cliente.getId()).toUri();
+        return ResponseEntity.created(url).body(detalleRegistroCliente);
     }
 
     @GetMapping
