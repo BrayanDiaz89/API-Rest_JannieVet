@@ -17,5 +17,10 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
            c.id = :idCliente
            """)
     boolean findByActivoById(Long idCliente);
+    //Validar si un cliente ya existe:
+    boolean existsByDocumentoOrEmailOrNumeroTelefonico(
+            String documento,
+            String email,
+            String numeroTelefonico);
 
 }
