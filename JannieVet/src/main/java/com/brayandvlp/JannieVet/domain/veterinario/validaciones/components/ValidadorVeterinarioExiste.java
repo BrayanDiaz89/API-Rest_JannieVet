@@ -14,10 +14,19 @@ public class ValidadorVeterinarioExiste implements ValidarRegistro {
     private VeterinarioRepository veterinarioRepository;
 
     public void validar(DatosRegistrarVeterinario datosRegistro){
-        var veterinario = veterinarioRepository.existsByDocumento(datosRegistro.documentoIdentidad());
+        var veterinario = veterinarioRepository.existsByDocumentoOrNumeroTelefonicoOrEmail(
+                datosRegistro.documentoIdentidad(),
+                datosRegistro.numeroTelefonico(),
+                datosRegistro.email());
         if (veterinario){
-            throw new ValidacionException("El veterinario ya existe, valide su documento de identidad.");
+            throw new ValidacionException("""
+                                        El veterinario ya ha sido registrado antes.
+                                        Los siguientes valores deben ser únicos en la BD.
+                                        Valide por favor su:
+                                        -> documento,
+                                        -> email,
+                                        -> numero telefónico.
+                                        en el registro suministrado.""");
         }
     }
-
 }

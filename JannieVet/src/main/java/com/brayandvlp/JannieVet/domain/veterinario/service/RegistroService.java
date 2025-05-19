@@ -29,5 +29,4 @@ public class RegistroService {
         veterinarioRepository.save(registro);
         return new DatosListadoVeterinario(registro);
     }
-
 }

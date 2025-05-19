@@ -9,5 +9,7 @@ public interface VeterinarioRepository extends JpaRepository<Veterinario, Long> 
     Page<Veterinario> findByActivoTrue(Pageable paginacion);
     Page<Veterinario> findByActivoFalse(Pageable paginacion);
 
-    boolean existsByDocumento(String documento);
+    boolean existsByDocumentoOrNumeroTelefonicoOrEmail(String documento,
+                                                   String numeroTelefonico,
+                                                   String email);
 }

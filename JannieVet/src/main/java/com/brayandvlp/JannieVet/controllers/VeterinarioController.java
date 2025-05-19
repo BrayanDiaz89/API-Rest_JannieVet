@@ -29,19 +29,6 @@ public class VeterinarioController {
     @Autowired
     private RegistroService registroService;
 
-    /*@PostMapping
-    public ResponseEntity<DatosRespuestaVeterinario> registrarVeterinario(@RequestBody @Valid DatosRegistrarVeterinario datosRegistrarVeterinario,
-                                                                          UriComponentsBuilder uriComponentsBuilder){
-        Veterinario veterinario = veterinarioRepository.save(new Veterinario(datosRegistrarVeterinario));
-
-        DatosRespuestaVeterinario datosRespuestaVeterinario = new DatosRespuestaVeterinario(veterinario.getId(), veterinario.getDocumento(), veterinario.getNombreCompleto(),
-                veterinario.getNumeroTelefonico(), veterinario.getEmail(), veterinario.getEspecialidad(), veterinario.getFecha(), veterinario.getActivo(),
-                new DatosDireccion(veterinario.getDireccion().getCiudad(), veterinario.getDireccion().getCodigoPostal(), veterinario.getDireccion().getCalle(),
-                        veterinario.getDireccion().getNumero(), veterinario.getDireccion().getComplemento()));
-        URI url = uriComponentsBuilder.path("/veterinarios/{id}").buildAndExpand(veterinario.getId()).toUri();
-        return ResponseEntity.created(url).body(datosRespuestaVeterinario);
-    }*/
-
     @PostMapping
     public ResponseEntity<DatosListadoVeterinario> registrarVeterinario(@RequestBody @Valid DatosRegistrarVeterinario datosRegistro,
                                                                           UriComponentsBuilder uriComponentsBuilder){
@@ -49,7 +36,6 @@ public class VeterinarioController {
         URI url = uriComponentsBuilder.path("/veterinarios/{id}").buildAndExpand(detallesRegistroVeterinario.id()).toUri();
         return ResponseEntity.created(url).body(detallesRegistroVeterinario);
     }
-
 
     @GetMapping
     public ResponseEntity<Page<DatosListadoVeterinario>> listadoVeterinarios(@PageableDefault(size =5)Pageable paginacion) {
