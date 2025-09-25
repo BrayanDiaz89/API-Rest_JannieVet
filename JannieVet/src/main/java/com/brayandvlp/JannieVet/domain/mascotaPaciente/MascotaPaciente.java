@@ -2,7 +2,6 @@ package com.brayandvlp.JannieVet.domain.mascotaPaciente;
 
 import com.brayandvlp.JannieVet.domain.cliente.Cliente;
 
-import com.brayandvlp.JannieVet.domain.cliente.dtos.DatosActualizarCliente;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosActualizarPaciente;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
@@ -10,7 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.mapping.UniqueKey;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
