@@ -1,0 +1,1 @@
+ALTER TABLE consultas MODIFY COLUMN id_pago bigint NULL;
