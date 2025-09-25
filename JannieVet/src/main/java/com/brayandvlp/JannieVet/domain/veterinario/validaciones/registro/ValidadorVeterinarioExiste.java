@@ -2,13 +2,13 @@ package com.brayandvlp.JannieVet.domain.veterinario.validaciones.registro;
 
 import com.brayandvlp.JannieVet.domain.veterinario.VeterinarioRepository;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosRegistrarVeterinario;
-import com.brayandvlp.JannieVet.domain.veterinario.validaciones.interfaces.ValidarRegistro;
+import com.brayandvlp.JannieVet.domain.veterinario.validaciones.interfaces.ValidadorRegistroVeterinario;
 import com.brayandvlp.JannieVet.infra.errores.ValidacionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ValidadorVeterinarioExiste implements ValidarRegistro {
+public class ValidadorVeterinarioExiste implements ValidadorRegistroVeterinario {
 
     @Autowired
     private VeterinarioRepository veterinarioRepository;

@@ -2,13 +2,13 @@ package com.brayandvlp.JannieVet.domain.veterinario.validaciones.actualizacion;
 
 import com.brayandvlp.JannieVet.domain.veterinario.VeterinarioRepository;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosActualizarVeterinario;
-import com.brayandvlp.JannieVet.domain.veterinario.validaciones.interfaces.ValidarActualizacion;
+import com.brayandvlp.JannieVet.domain.veterinario.validaciones.interfaces.ValidadorActualizaVeterinario;
 import com.brayandvlp.JannieVet.infra.errores.ValidacionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ValidacionIdVeterinarioExiste implements ValidarActualizacion {
+public class ValidacionIdVeterinarioExiste implements ValidadorActualizaVeterinario {
 
     @Autowired
     private VeterinarioRepository veterinarioRepository;

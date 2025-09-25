@@ -1,12 +1,12 @@
 package com.brayandvlp.JannieVet.domain.veterinario.validaciones.actualizacion;
 
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosActualizarVeterinario;
-import com.brayandvlp.JannieVet.domain.veterinario.validaciones.interfaces.ValidarActualizacion;
+import com.brayandvlp.JannieVet.domain.veterinario.validaciones.interfaces.ValidadorActualizaVeterinario;
 import com.brayandvlp.JannieVet.infra.errores.ValidacionException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ValidacionAlMenosUnCambioEsRealizado implements ValidarActualizacion {
+public class ValidacionAlMenosUnCambioEsRealizado implements ValidadorActualizaVeterinario {
 
     public void validar(DatosActualizarVeterinario datosActualizacion){
 

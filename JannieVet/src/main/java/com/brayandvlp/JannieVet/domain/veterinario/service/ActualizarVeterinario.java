@@ -3,8 +3,7 @@ package com.brayandvlp.JannieVet.domain.veterinario.service;
 import com.brayandvlp.JannieVet.domain.veterinario.VeterinarioRepository;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosActualizarVeterinario;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosListadoVeterinario;
-import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosRespuestaVeterinario;
-import com.brayandvlp.JannieVet.domain.veterinario.validaciones.interfaces.ValidarActualizacion;
+import com.brayandvlp.JannieVet.domain.veterinario.validaciones.interfaces.ValidadorActualizaVeterinario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,7 @@ public class ActualizarVeterinario {
     @Autowired
     private VeterinarioRepository veterinarioRepository;
     @Autowired
-    private List<ValidarActualizacion> validadores;
+    private List<ValidadorActualizaVeterinario> validadores;
 
     public DatosListadoVeterinario actualizarVeterinario(DatosActualizarVeterinario datosActualizacion){
 

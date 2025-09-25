@@ -7,6 +7,7 @@ import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosListadoVeterinario;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosRegistrarVeterinario;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosRespuestaVeterinario;
 import com.brayandvlp.JannieVet.domain.veterinario.service.ActualizarVeterinario;
+import com.brayandvlp.JannieVet.domain.veterinario.service.EliminarVeterinario;
 import com.brayandvlp.JannieVet.domain.veterinario.service.RegistroVeterinario;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -31,6 +32,8 @@ public class VeterinarioController {
     private RegistroVeterinario registroService;
     @Autowired
     private ActualizarVeterinario actualizarService;
+    @Autowired
+    private EliminarVeterinario eliminarService;
 
     @PostMapping
     public ResponseEntity<DatosListadoVeterinario> registrarVeterinario(@RequestBody @Valid DatosRegistrarVeterinario datosRegistro,
@@ -59,8 +62,7 @@ public class VeterinarioController {
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity desactivarVeterinario(@PathVariable Long id) {
-        Veterinario veterinario = veterinarioRepository.getReferenceById(id);
-        veterinario.desactivarVeterinario();
+        eliminarService.eliminarVeterinario(id);
         return ResponseEntity.noContent().build();
     }
 }

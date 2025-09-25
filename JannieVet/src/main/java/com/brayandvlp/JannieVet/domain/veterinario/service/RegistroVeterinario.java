@@ -4,7 +4,7 @@ import com.brayandvlp.JannieVet.domain.veterinario.Veterinario;
 import com.brayandvlp.JannieVet.domain.veterinario.VeterinarioRepository;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosListadoVeterinario;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosRegistrarVeterinario;
-import com.brayandvlp.JannieVet.domain.veterinario.validaciones.interfaces.ValidarRegistro;
+import com.brayandvlp.JannieVet.domain.veterinario.validaciones.interfaces.ValidadorRegistroVeterinario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class RegistroVeterinario {
     private VeterinarioRepository veterinarioRepository;
 
     @Autowired
-    private List<ValidarRegistro> validadores;
+    private List<ValidadorRegistroVeterinario> validadores;
 
 
     public DatosListadoVeterinario registrar(DatosRegistrarVeterinario datosRegistro) {
