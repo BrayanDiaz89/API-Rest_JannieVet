@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ActualizacionDePacientes {
+public class ActualizarPaciente {
 
     @Autowired
     private ClienteRepository clienteRepository;

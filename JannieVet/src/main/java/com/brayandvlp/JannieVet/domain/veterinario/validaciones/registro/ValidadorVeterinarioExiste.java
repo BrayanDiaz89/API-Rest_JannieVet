@@ -1,4 +1,4 @@
-package com.brayandvlp.JannieVet.domain.veterinario.validaciones.components;
+package com.brayandvlp.JannieVet.domain.veterinario.validaciones.registro;
 
 import com.brayandvlp.JannieVet.domain.veterinario.VeterinarioRepository;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosRegistrarVeterinario;

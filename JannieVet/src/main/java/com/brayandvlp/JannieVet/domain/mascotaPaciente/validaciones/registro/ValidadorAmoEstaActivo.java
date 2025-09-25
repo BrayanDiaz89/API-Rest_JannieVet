@@ -1,8 +1,7 @@
-package com.brayandvlp.JannieVet.domain.mascotaPaciente.validaciones.creacion;
+package com.brayandvlp.JannieVet.domain.mascotaPaciente.validaciones.registro;
 
 import com.brayandvlp.JannieVet.domain.cliente.ClienteRepository;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosCompletosRegistrarPaciente;
-import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosRegistrarPaciente;
 import com.brayandvlp.JannieVet.infra.errores.ValidacionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -5,7 +5,7 @@ import com.brayandvlp.JannieVet.domain.mascotaPaciente.MascotaPaciente;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.PacienteRepository;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosCompletosRegistrarPaciente;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosListadoPacientes;
-import com.brayandvlp.JannieVet.domain.mascotaPaciente.validaciones.creacion.ValidadorDePacientes;
+import com.brayandvlp.JannieVet.domain.mascotaPaciente.validaciones.registro.ValidadorDePacientes;
 import com.brayandvlp.JannieVet.infra.errores.ValidacionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

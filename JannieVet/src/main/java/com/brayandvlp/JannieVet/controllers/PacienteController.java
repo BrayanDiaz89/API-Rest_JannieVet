@@ -5,8 +5,8 @@ import com.brayandvlp.JannieVet.domain.mascotaPaciente.PacienteRepository;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosActualizarPaciente;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosCompletosRegistrarPaciente;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosListadoPacientes;
-import com.brayandvlp.JannieVet.domain.mascotaPaciente.service.ActualizacionDePacientes;
-import com.brayandvlp.JannieVet.domain.mascotaPaciente.service.EliminaPaciente;
+import com.brayandvlp.JannieVet.domain.mascotaPaciente.service.ActualizarPaciente;
+import com.brayandvlp.JannieVet.domain.mascotaPaciente.service.EliminarPaciente;
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.service.RegistroDePacientes;
 
 import jakarta.transaction.Transactional;
@@ -28,9 +28,9 @@ public class PacienteController {
     @Autowired
     private RegistroDePacientes registroDePacientes;
     @Autowired
-    private ActualizacionDePacientes actualizacionDePacientes;
+    private ActualizarPaciente actualizacionDePacientes;
     @Autowired
-    private EliminaPaciente eliminaPaciente;
+    private EliminarPaciente eliminaPaciente;
 
     @PostMapping
     public ResponseEntity<DatosListadoPacientes> registrarPaciente(@RequestBody @Valid DatosCompletosRegistrarPaciente datosRegistro){

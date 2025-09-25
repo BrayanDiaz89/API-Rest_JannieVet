@@ -6,7 +6,8 @@ import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosActualizarVeterinar
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosListadoVeterinario;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosRegistrarVeterinario;
 import com.brayandvlp.JannieVet.domain.veterinario.dtos.DatosRespuestaVeterinario;
-import com.brayandvlp.JannieVet.domain.veterinario.service.RegistroService;
+import com.brayandvlp.JannieVet.domain.veterinario.service.ActualizarVeterinario;
+import com.brayandvlp.JannieVet.domain.veterinario.service.RegistroVeterinario;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,9 @@ public class VeterinarioController {
     @Autowired
     private VeterinarioRepository veterinarioRepository;
     @Autowired
-    private RegistroService registroService;
+    private RegistroVeterinario registroService;
+    @Autowired
+    private ActualizarVeterinario actualizarService;
 
     @PostMapping
     public ResponseEntity<DatosListadoVeterinario> registrarVeterinario(@RequestBody @Valid DatosRegistrarVeterinario datosRegistro,
@@ -48,14 +51,11 @@ public class VeterinarioController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity<DatosRespuestaVeterinario> actualizarDatosVeterinario(@RequestBody @Valid DatosActualizarVeterinario datosActualizacion){
-        Veterinario veterinario = veterinarioRepository.getReferenceById(datosActualizacion.id());
-        veterinario.actualizarDatos(datosActualizacion);
-        return ResponseEntity.ok(new DatosRespuestaVeterinario(veterinario.getId(), veterinario.getDocumento(), veterinario.getNombreCompleto(),
-                veterinario.getNumeroTelefonico(), veterinario.getEmail(), veterinario.getEspecialidad(), veterinario.getFecha(), veterinario.getActivo(),
-                new DatosDireccion(veterinario.getDireccion().getCiudad(), veterinario.getDireccion().getCodigoPostal(), veterinario.getDireccion().getCalle(),
-                        veterinario.getDireccion().getNumero(), veterinario.getDireccion().getComplemento())));
+    public ResponseEntity<DatosListadoVeterinario> actualizarVeterinario(@RequestBody @Valid DatosActualizarVeterinario datosActualizacion){
+        var detalleActualizacionVeterinario = actualizarService.actualizarVeterinario(datosActualizacion);
+        return ResponseEntity.ok(detalleActualizacionVeterinario);
     }
+
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity desactivarVeterinario(@PathVariable Long id) {

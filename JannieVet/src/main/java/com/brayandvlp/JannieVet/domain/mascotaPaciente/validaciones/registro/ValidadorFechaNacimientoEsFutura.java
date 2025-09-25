@@ -1,8 +1,7 @@
-package com.brayandvlp.JannieVet.domain.mascotaPaciente.validaciones.creacion;
+package com.brayandvlp.JannieVet.domain.mascotaPaciente.validaciones.registro;
 
 import com.brayandvlp.JannieVet.domain.mascotaPaciente.dtos.DatosCompletosRegistrarPaciente;
 import com.brayandvlp.JannieVet.infra.errores.ValidacionException;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
