@@ -8,4 +8,5 @@ import java.time.LocalDateTime;
 
 public interface ConsultaRepository extends JpaRepository<Consulta, Long> {
     Boolean existsByPacienteIdAndFechaAndMotivoCancelamientoIsNull(Long idPaciente, LocalDateTime fechaConsulta);
+    Boolean existsByVeterinarioIdAndFechaAndMotivoCancelamientoIsNull(Long id, LocalDateTime fecha);
 }
