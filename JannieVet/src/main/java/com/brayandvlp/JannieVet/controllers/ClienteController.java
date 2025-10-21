@@ -32,7 +32,7 @@ public class ClienteController {
                                                                   UriComponentsBuilder uriComponentsBuilder) {
         var detalleRegistroCliente = serviceRegistro.crearCliente(datosRegistro);
         Cliente cliente = clienteRepository.getReferenceById(detalleRegistroCliente.id());
-        URI url = uriComponentsBuilder.path("/clientes/{id]").buildAndExpand(cliente.getId()).toUri();
+        URI url = uriComponentsBuilder.path("/clientes/{id}").buildAndExpand(cliente.getId()).toUri();
         return ResponseEntity.created(url).body(detalleRegistroCliente);
     }
 
